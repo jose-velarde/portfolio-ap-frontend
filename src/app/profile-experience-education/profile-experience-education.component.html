@@ -1,0 +1,55 @@
+<div class="flex flex-col gap-2 p-3 rounded-lg border border-gray-300">
+  <div class="prose-p:my-0 prose-headings:mt-0 max-w-none prose">
+    <h2 class="flex justify-between items-center">
+      <span>Experience</span>
+      <button>
+        <fa-icon class="text-slate-700" icon="plus"></fa-icon>
+      </button>
+    </h2>
+
+    <div class="flex gap-4 items-center" *ngFor="let experience of experiences">
+      <div class="flex grow-0 w-24 h-24 bg-slate-500 rounded-full"></div>
+      <div class="flex flex-col grow">
+        <h3 class="flex justify-between items-center">
+          <span>{{ experience.position }}</span>
+          <div class="flex gap-3">
+            <button>
+              <fa-icon class="text-slate-700" icon="trash-can"></fa-icon>
+            </button>
+            <button>
+              <fa-icon class="text-slate-700" icon="pencil"></fa-icon>
+            </button>
+          </div>
+        </h3>
+        <p class="">{{ experience.company }}</p>
+        <p class="text-orange-600">{{ experience.start_date }}</p>
+        <p class="">{{ experience.location }}</p>
+      </div>
+    </div>
+  </div>
+  <div class="max-w-none prose">
+    <h2 class="flex justify-between items-center">
+      <span>Education</span>
+      <fa-icon class="text-slate-700" icon="plus"></fa-icon>
+    </h2>
+    <div class="flex gap-4 items-center" *ngFor="let education of educations">
+      <div class="flex grow-0 w-24 h-24 bg-slate-500 rounded-full"></div>
+      <div class="flex flex-col grow">
+        <h3 class="flex justify-between items-center">
+          <span>{{ education.career }}</span>
+          <div class="flex gap-3">
+            <button>
+              <fa-icon class="text-slate-700" icon="trash-can"></fa-icon>
+            </button>
+            <button>
+              <fa-icon class="text-slate-700" icon="pencil"></fa-icon>
+            </button>
+          </div>
+        </h3>
+        <p class="">{{ education.institution }}</p>
+        <p class="text-orange-600">{{ education.start_date }}</p>
+        <p class="">{{ education.location }}</p>
+      </div>
+    </div>
+  </div>
+</div>

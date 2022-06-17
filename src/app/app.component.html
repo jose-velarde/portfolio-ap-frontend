@@ -1,104 +1,12 @@
 <header>
-  <nav class="flex justify-between items-center p-2 bg-slate-700">
-    <div class="text-white">AP logo+Name</div>
-    <div class="flex gap-2 items-center">
-      <a href="https://github.com/jose-velarde">
-        <fa-icon class="text-white" [icon]="faGithub" size="2x"></fa-icon>
-      </a>
-      <a href="https://www.linkedin.com/in/jose-velarde/">
-        <fa-icon class="text-white" [icon]="faLinkedin" size="2x"></fa-icon>
-      </a>
-      <a href=""
-        ><button class="py-2 px-4 text-white rounded-md border">
-          Login
-        </button></a
-      >
-    </div>
-  </nav>
+  <app-profile-nav></app-profile-nav>
 </header>
 <main class="flex flex-col gap-2 m-2">
-  <div class="rounded-lg border border-gray-300">
-    <div class="h-32 bg-slate-500 rounded-t-lg"></div>
-    <div class="flex justify-between p-3">
-      <div class="">
-        <div class="w-32 h-32 bg-slate-500 rounded-full"></div>
-        <div class="">Name</div>
-        <div class="">Occupation</div>
-        <div class="">Location</div>
-        <div class="">Contact information</div>
-        <div class="flex gap-2">
-          <button class="py-2 px-4 text-white bg-slate-500 rounded-sm">
-            Interested in
-          </button>
-          <button class="py-2 px-4 text-white bg-slate-500 rounded-sm">
-            Add section
-          </button>
-          <button class="py-2 px-4 text-white bg-slate-500 rounded-sm">
-            More
-          </button>
-        </div>
-      </div>
-      <div class="">Current workplace logo</div>
-    </div>
-  </div>
-  <div class="p-3 max-w-none rounded-lg border border-gray-300 prose">
-    <h2>About me</h2>
-    <p>
-      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit,
-      perferendis at aperiam harum minima libero! Quae dolorem deserunt, esse
-      aspernatur tenetur tempore eos omnis, quisquam illum, dolorum laboriosam
-      ullam pariatur.
-    </p>
-  </div>
-
-  <div class="flex flex-col gap-2 p-3 rounded-lg border border-gray-300">
-    <div class="prose-p:my-0 prose-headings:mt-0 max-w-none prose">
-      <h2 class="flex justify-between items-center">
-        <span>Experience</span>
-        <button>
-          <fa-icon class="text-slate-700" [icon]="faPlus"></fa-icon>
-        </button>
-      </h2>
-
-      <div class="flex gap-4 items-center">
-        <div class="flex grow-0 w-24 h-24 bg-slate-500 rounded-full"></div>
-        <div class="flex flex-col grow">
-          <h3 class="flex justify-between items-center">
-            <span>{{ mockJob.name }}</span>
-            <div class="flex gap-3">
-              <button>
-                <fa-icon class="text-slate-700" [icon]="faTrashCan"></fa-icon>
-              </button>
-              <button>
-                <fa-icon class="text-slate-700" [icon]="faPencil"></fa-icon>
-              </button>
-            </div>
-          </h3>
-          <p class="">{{ mockJob.company }}</p>
-          <p class="text-orange-600">{{ mockJob.date }}</p>
-          <p class="">{{ mockJob.location }}</p>
-        </div>
-      </div>
-    </div>
-    <div class="max-w-none prose">
-      <h2 class="flex justify-between items-center">
-        <span>Education</span>
-        <fa-icon class="text-slate-700" [icon]="faPlus"></fa-icon>
-      </h2>
-    </div>
-  </div>
-  <div class="p-3 max-w-none rounded-lg border border-gray-300 prose">
-    <h2 class="flex justify-between items-center">
-      <span>Skills</span>
-      <fa-icon class="text-slate-700" [icon]="faPlus"></fa-icon>
-    </h2>
-  </div>
-  <div class="p-3 max-w-none rounded-lg border border-gray-300 prose">
-    <h2 class="flex justify-between items-center">
-      <span>Projects</span>
-      <fa-icon class="text-slate-700" [icon]="faPlus"></fa-icon>
-    </h2>
-  </div>
+  <app-profile-details></app-profile-details>
+  <app-profile-about-me></app-profile-about-me>
+  <app-profile-experience-education></app-profile-experience-education>
+  <app-profile-skills></app-profile-skills>
+  <app-profile-projects></app-profile-projects>
 </main>
 
 <footer></footer>

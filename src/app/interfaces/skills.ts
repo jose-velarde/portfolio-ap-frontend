@@ -1,10 +1,15 @@
 export interface Skills {
-  id: Number
-  soft_skills: Skill[]
-  hard_skills: Skill[]
+  id: number
+  soft_skills: SoftSkill[]
+  hard_skills: HardSkill[]
 }
 
-interface Skill {
-  skill_name: String
-  score: Number
+interface SoftSkill {
+  soft_skill_name: String
+  soft_skill_score: number
+}
+
+interface HardSkill {
+  hard_skill_name: String
+  hard_skill_score: number
 }

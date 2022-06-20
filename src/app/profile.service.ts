@@ -5,6 +5,7 @@ import { Experience } from './interfaces/experience'
 import { Education } from './interfaces/education'
 import { Profile } from './interfaces/profile'
 import { Skills } from './interfaces/skills'
+import { Project } from './interfaces/project'
 
 @Injectable({
   providedIn: 'root',
@@ -30,6 +31,11 @@ export class ProfileService {
   getSkills() {
     return this.http.get<Skills[]>(
       'https://jvelarde-ap-backend.herokuapp.com/api/profiles/1/skills'
+    )
+  }
+  getProjects() {
+    return this.http.get<Project[]>(
+      'https://jvelarde-ap-backend.herokuapp.com/api/profiles/1/project'
     )
   }
 }

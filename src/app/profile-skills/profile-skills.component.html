@@ -1,15 +1,31 @@
-<div class="p-3 max-w-none rounded-lg border border-gray-300 prose">
+<div
+  class="p-3 prose-p:mt-2 prose-headings:mt-0 max-w-none prose-p:text-xl rounded-lg border border-gray-300 prose"
+>
   <h2 class="flex justify-between items-center">
     <span>Skills</span>
     <fa-icon class="text-slate-700" icon="plus"></fa-icon>
   </h2>
 
-  <div class="flex gap-4 items-center" *ngFor="let skill of skills">
-    <div class="" *ngFor="let soft_skill of skill.soft_skills">
-      <p>{{ soft_skill.skill_name }} {{ soft_skill.score }}</p>
+  <div class="grid grid-cols-4" *ngFor="let skill of skills">
+    <div
+      class="flex flex-col items-center"
+      *ngFor="let soft_skill of skill.soft_skills"
+    >
+      <app-progress-circle
+        [progress]="soft_skill.soft_skill_score"
+      ></app-progress-circle>
+      <p class="">{{ soft_skill.soft_skill_name }}</p>
     </div>
-    <div class="" *ngFor="let hard_skill of skill.hard_skills">
-      <p>{{ hard_skill.skill_name }} {{ hard_skill.score }}</p>
+  </div>
+  <div class="grid grid-cols-4" *ngFor="let skill of skills">
+    <div
+      class="flex flex-col items-center"
+      *ngFor="let hard_skill of skill.hard_skills"
+    >
+      <app-progress-circle
+        [progress]="hard_skill.hard_skill_score"
+      ></app-progress-circle>
+      <p class="">{{ hard_skill.hard_skill_name }}</p>
     </div>
   </div>
 </div>

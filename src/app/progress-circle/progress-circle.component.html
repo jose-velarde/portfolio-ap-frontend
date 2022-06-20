@@ -1,0 +1,9 @@
+<div
+  appObserveVisibility
+  [debounceTime]="200"
+  (visible)="onVisible($event)"
+  role="progressbar"
+  [attr.aria-valuenow]="ariaValuenow"
+  aria-valuemin="0"
+  aria-valuemax="100"
+></div>

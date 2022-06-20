@@ -7,7 +7,12 @@ import {
   FontAwesomeModule,
   FaIconLibrary,
 } from '@fortawesome/angular-fontawesome'
-import { faPlus, faPencil, faTrashCan } from '@fortawesome/free-solid-svg-icons'
+import {
+  faPlus,
+  faPencil,
+  faTrashCan,
+  faLink,
+} from '@fortawesome/free-solid-svg-icons'
 import {} from '@fortawesome/free-regular-svg-icons'
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons'
 
@@ -18,6 +23,8 @@ import { ProfileExperienceEducationComponent } from './profile-experience-educat
 import { ProfileProjectsComponent } from './profile-projects/profile-projects.component'
 import { ProfileSkillsComponent } from './profile-skills/profile-skills.component'
 import { ProfileNavComponent } from './profile-nav/profile-nav.component'
+import { ProgressCircleComponent } from './progress-circle/progress-circle.component'
+import { ObserveVisibilityDirective } from './observe-visibility.directive'
 
 @NgModule({
   declarations: [
@@ -28,6 +35,8 @@ import { ProfileNavComponent } from './profile-nav/profile-nav.component'
     ProfileProjectsComponent,
     ProfileSkillsComponent,
     ProfileNavComponent,
+    ProgressCircleComponent,
+    ObserveVisibilityDirective,
   ],
   imports: [
     BrowserModule,
@@ -41,6 +50,6 @@ import { ProfileNavComponent } from './profile-nav/profile-nav.component'
 export class AppModule {
   constructor(library: FaIconLibrary) {
     // Add an icon to the library for convenient access in other components
-    library.addIcons(faGithub, faLinkedin, faPlus, faPencil, faTrashCan)
+    library.addIcons(faGithub, faLinkedin, faPlus, faPencil, faTrashCan, faLink)
   }
 }

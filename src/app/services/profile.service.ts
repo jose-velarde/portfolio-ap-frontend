@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
 
-import { Experience } from './interfaces/experience'
-import { Education } from './interfaces/education'
-import { Profile } from './interfaces/profile'
-import { Skills } from './interfaces/skills'
-import { Project } from './interfaces/project'
+import { Experience } from '../interfaces/experience'
+import { Education } from '../interfaces/education'
+import { Profile } from '../interfaces/profile'
+import { Skills } from '../interfaces/skills'
+import { Project } from '../interfaces/project'
 
 @Injectable({
   providedIn: 'root',

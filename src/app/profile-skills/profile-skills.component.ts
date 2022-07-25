@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core'
 import { Skills } from '../interfaces/skills'
-import { ProfileService } from '../profile.service'
+import { ProfileService } from '../services/profile.service'
 
 @Component({
   selector: 'app-profile-skills',

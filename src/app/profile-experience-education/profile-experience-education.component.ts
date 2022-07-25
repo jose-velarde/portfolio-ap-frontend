@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core'
 import { Experience } from '../interfaces/experience'
 import { Education } from '../interfaces/education'
-import { ProfileService } from '../profile.service'
+import { ProfileService } from '../services/profile.service'
 
 @Component({
   selector: 'app-profile-experience-education',

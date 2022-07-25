@@ -1,14 +1,9 @@
-<header>
-  <app-profile-nav></app-profile-nav>
-</header>
-<main class="flex flex-col gap-2 m-2">
-  <app-profile-details></app-profile-details>
-  <app-profile-about-me></app-profile-about-me>
-  <app-profile-experience-education></app-profile-experience-education>
-  <app-profile-skills></app-profile-skills>
-  <app-profile-projects></app-profile-projects>
-</main>
-
-<footer></footer>
-
-<router-outlet></router-outlet>
+<body class="flex flex-col min-h-screen">
+  <header>
+    <app-profile-nav></app-profile-nav>
+  </header>
+  <router-outlet class=""></router-outlet>
+  <footer>
+    <app-profile-footer></app-profile-footer>
+  </footer>
+</body>

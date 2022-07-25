@@ -1,7 +1,5 @@
 import { Component } from '@angular/core'
-import { faPlus, faPencil, faTrashCan } from '@fortawesome/free-solid-svg-icons'
 import {} from '@fortawesome/free-regular-svg-icons'
-import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons'
 
 @Component({
   selector: 'app-root',
@@ -10,9 +8,4 @@ import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons'
 })
 export class AppComponent {
   title = 'Argentina Programa - Fullstack Project'
-  faGithub = faGithub
-  faLinkedin = faLinkedin
-  faPlus = faPlus
-  faPencil = faPencil
-  faTrashCan = faTrashCan
 }

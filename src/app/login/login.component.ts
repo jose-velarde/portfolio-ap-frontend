@@ -1,4 +1,7 @@
+import { HttpErrorResponse } from '@angular/common/http'
 import { Component, HostBinding, OnInit } from '@angular/core'
+import { NgForm } from '@angular/forms'
+import { Router } from '@angular/router'
 import { User } from '../interfaces/user'
 import { AuthService } from '../services/auth.service'
 
@@ -12,14 +15,20 @@ export class LoginComponent implements OnInit {
   password: string = ''
   @HostBinding('class') flex = 'flex flex-col grow'
 
-  constructor(public authService: AuthService) {}
+  constructor(private router: Router, private authService: AuthService) {}
 
-  login() {
+  login(form: NgForm) {
     const user: User = { email: this.email, password: this.password }
-    this.authService.login(user).subscribe((data) => {
-      console.log(data)
+    this.authService.login(user).subscribe({
+      next: (data) => {
+        localStorage.setItem('token', data.token)
+        localStorage.setItem('isLoggedIn', 'true')
+        this.router.navigate(['/']).then(() => {
+          window.location.reload()
+        })
+      },
+      error: (err: HttpErrorResponse) => form.reset(),
     })
   }
-
   ngOnInit(): void {}
 }

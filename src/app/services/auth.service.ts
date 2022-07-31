@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http'
-import { Injectable } from '@angular/core'
+import { EventEmitter, Injectable, Output } from '@angular/core'
 import { catchError, Observable, of } from 'rxjs'
+import { Token } from '../interfaces/token'
 import { User } from '../interfaces/user'
 
 @Injectable({
@@ -8,6 +9,7 @@ import { User } from '../interfaces/user'
 })
 export class AuthService {
   constructor(private http: HttpClient) {}
+  @Output() fireIsLoggedIn: EventEmitter<any> = new EventEmitter<any>()
 
   private loginUrl = 'https://reqres.in/api/login' // URL to web api
 
@@ -15,10 +17,8 @@ export class AuthService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
   }
 
-  login(user: User): Observable<User> {
-    return this.http
-      .post<User>(this.loginUrl, user, this.httpOptions)
-      .pipe(catchError(this.handleError<User>('login')))
+  login(user: User): Observable<Token> {
+    return this.http.post<Token>(this.loginUrl, user, this.httpOptions)
   }
 
   logout(): void {
@@ -32,7 +32,12 @@ export class AuthService {
     } else {
       status = false
     }
+    this.fireIsLoggedIn.emit(status)
     return status
+  }
+
+  getEmitter() {
+    return this.fireIsLoggedIn
   }
 
   /**

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core'
+import { AuthService } from '../services/auth.service'
 
 @Component({
   selector: 'app-profile-nav',
@@ -6,7 +7,15 @@ import { Component, OnInit } from '@angular/core'
   styleUrls: ['./profile-nav.component.css'],
 })
 export class ProfileNavComponent implements OnInit {
-  constructor() {}
+  constructor(private authService: AuthService) {}
+  loggedIn: boolean = false
 
-  ngOnInit(): void {}
+  logout() {
+    this.authService.logout()
+    window.location.reload()
+  }
+
+  ngOnInit(): void {
+    this.loggedIn = this.authService.isLoggedIn()
+  }
 }

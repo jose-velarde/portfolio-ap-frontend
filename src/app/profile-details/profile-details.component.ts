@@ -11,11 +11,16 @@ export class ProfileDetailsComponent implements OnInit {
   constructor(private profileService: ProfileService) {}
 
   profile: Profile | undefined
+  editable: boolean = false
 
   showProfile() {
     this.profileService
       .getProfile()
       .subscribe((data: Profile) => (this.profile = { ...data }))
+  }
+
+  setEdit() {
+    this.editable = true
   }
 
   ngOnInit(): void {

@@ -6,6 +6,7 @@ import { Education } from '../interfaces/education'
 import { Profile } from '../interfaces/profile'
 import { Skills } from '../interfaces/skills'
 import { Project } from '../interfaces/project'
+import { Observable } from 'rxjs'
 
 @Injectable({
   providedIn: 'root',
@@ -36,6 +37,13 @@ export class ProfileService {
   getProjects() {
     return this.http.get<Project[]>(
       'https://jvelarde-ap-backend.herokuapp.com/api/profiles/1/project'
+    )
+  }
+
+  putProfile(profile: Profile): Observable<Profile> {
+    return this.http.post<Profile>(
+      'https://jvelarde-ap-backend.herokuapp.com/api/profiles/1',
+      profile
     )
   }
 }

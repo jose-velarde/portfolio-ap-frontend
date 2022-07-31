@@ -29,8 +29,15 @@ export class ProfileAboutMeComponent implements OnInit {
   }
 
   edit(profile: Profile) {
-    console.log(this.profileService.putProfile(profile).subscribe())
+    this.profileService.putProfile(profile).subscribe({
+      next: (response) => console.log(response),
+      error: (error) => console.error(error),
+      complete: () => {
+        this.setEditable()
+      },
+    })
   }
+
   ngOnInit(): void {
     this.loggedIn = this.authService.isLoggedIn()
     this.showProfile()

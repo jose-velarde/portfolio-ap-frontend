@@ -7,23 +7,56 @@
       </button>
     </h2>
 
-    <div class="flex gap-4 items-center" *ngFor="let experience of experiences">
-      <div class="flex grow-0 w-24 h-24 bg-slate-500 rounded-full"></div>
-      <div class="flex flex-col grow">
-        <h3 class="flex justify-between items-center">
-          <span>{{ experience.position }}</span>
-          <div class="flex gap-3">
-            <button>
-              <fa-icon class="text-slate-700" icon="trash-can"></fa-icon>
-            </button>
-            <button>
-              <fa-icon class="text-slate-700" icon="pencil"></fa-icon>
-            </button>
-          </div>
-        </h3>
-        <p class="">{{ experience.company }}</p>
-        <p class="text-orange-600">{{ experience.start_date }}</p>
-        <p class="">{{ experience.location }}</p>
+    <div class="" *ngIf="!editable">
+      <div
+        class="flex gap-4 items-center"
+        *ngFor="let experience of experiences"
+      >
+        <div class="flex grow-0 w-24 h-24 bg-slate-500 rounded-full"></div>
+        <div class="flex flex-col grow">
+          <h3 class="flex justify-between items-center">
+            <span>{{ experience.position }}</span>
+            <div class="flex gap-3" *ngIf="loggedIn">
+              <button>
+                <fa-icon class="text-slate-700" icon="trash-can"></fa-icon>
+              </button>
+              <button (click)="setEditable()">
+                <fa-icon class="text-slate-700" icon="pencil"></fa-icon>
+              </button>
+            </div>
+          </h3>
+          <p class="">{{ experience.company }}</p>
+          <p class="text-orange-600">
+            {{ experience.start_date | date: 'yyyy-MM':'+180' }} &rarr;
+            {{ experience.end_date | date: 'yyyy-MM':'+180' }}
+          </p>
+          <p class="">{{ experience.location }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="" *ngIf="editable">
+      <div class="flex flex-col gap-2" *ngFor="let experience of experiences">
+        <p class="font-bold">Experience: {{ experience.position }}</p>
+        <input class="w-full" [(ngModel)]="experience.position" type="text" />
+        <input class="w-full" [(ngModel)]="experience.company" type="text" />
+        <input class="w-full" [(ngModel)]="experience.start_date" type="text" />
+        <input class="w-full" [(ngModel)]="experience.end_date" type="text" />
+        <input class="w-full" [(ngModel)]="experience.location" type="text" />
+
+        <div class="flex gap-2 mb-2">
+          <button
+            (click)="editExperience(experience)"
+            class="py-2 px-4 text-white bg-slate-500 rounded-sm"
+          >
+            Edit
+          </button>
+          <button
+            (click)="setEditable()"
+            class="py-2 px-4 text-white bg-slate-500 rounded-sm"
+          >
+            Cancel
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -32,23 +65,54 @@
       <span>Education</span>
       <fa-icon class="text-slate-700" icon="plus"></fa-icon>
     </h2>
-    <div class="flex gap-4 items-center" *ngFor="let education of educations">
-      <div class="flex grow-0 w-24 h-24 bg-slate-500 rounded-full"></div>
-      <div class="flex flex-col grow">
-        <h3 class="flex justify-between items-center">
-          <span>{{ education.career }}</span>
-          <div class="flex gap-3">
-            <button>
-              <fa-icon class="text-slate-700" icon="trash-can"></fa-icon>
-            </button>
-            <button>
-              <fa-icon class="text-slate-700" icon="pencil"></fa-icon>
-            </button>
-          </div>
-        </h3>
-        <p class="">{{ education.institution }}</p>
-        <p class="text-orange-600">{{ education.start_date }}</p>
-        <p class="">{{ education.location }}</p>
+    <div class="" *ngIf="!editable">
+      <div class="flex gap-4 items-center" *ngFor="let education of educations">
+        <div class="flex grow-0 w-24 h-24 bg-slate-500 rounded-full"></div>
+        <div class="flex flex-col grow">
+          <h3 class="flex justify-between items-center">
+            <span>{{ education.career }}</span>
+            <div class="flex gap-3" *ngIf="loggedIn">
+              <button>
+                <fa-icon class="text-slate-700" icon="trash-can"></fa-icon>
+              </button>
+              <button (click)="setEditable()">
+                <fa-icon class="text-slate-700" icon="pencil"></fa-icon>
+              </button>
+            </div>
+          </h3>
+          <p class="">{{ education.institution }}</p>
+          <p class="text-orange-600">
+            {{ education.start_date | date: 'yyyy-MM':'+180' }} &rarr;
+            {{ education.end_date | date: 'yyyy-MM':'+180' }}
+          </p>
+          <p class="">{{ education.location }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="" *ngIf="editable">
+      <div class="flex flex-col gap-2" *ngFor="let education of educations">
+        <p class="font-bold">Education: {{ education.degree }}</p>
+        <input class="w-full" [(ngModel)]="education.degree" type="text" />
+        <input class="w-full" [(ngModel)]="education.career" type="text" />
+        <input class="w-full" [(ngModel)]="education.institution" type="text" />
+        <input class="w-full" [(ngModel)]="education.start_date" type="text" />
+        <input class="w-full" [(ngModel)]="education.end_date" type="text" />
+        <input class="w-full" [(ngModel)]="education.location" type="text" />
+
+        <div class="flex gap-2 mb-2">
+          <button
+            (click)="editEducation(education)"
+            class="py-2 px-4 text-white bg-slate-500 rounded-sm"
+          >
+            Edit
+          </button>
+          <button
+            (click)="setEditable()"
+            class="py-2 px-4 text-white bg-slate-500 rounded-sm"
+          >
+            Cancel
+          </button>
+        </div>
       </div>
     </div>
   </div>

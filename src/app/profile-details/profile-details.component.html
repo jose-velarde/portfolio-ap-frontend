@@ -1,26 +1,69 @@
 <div class="rounded-lg border border-gray-300">
-  <div class="h-32 bg-slate-500 rounded-t-lg"></div>
+  <div class="h-32 bg-slate-500 rounded-t-lg">
+    <img
+      class="object-cover relative w-full h-full rounded-t-lg"
+      [src]="profile.background_img_url"
+    />
+  </div>
   <div class="flex justify-between p-3">
-    <div class="flex flex-col">
-      <div class="w-32 h-32 bg-slate-500 rounded-full"></div>
-      <div class="">
-        {{ profile?.name + ' ' + profile?.lastname }}
+    <div class="flex flex-col w-full">
+      <div class="flex flex-col" *ngIf="!editable">
+        <div
+          class="w-32 h-32 bg-slate-500 rounded-full border-2 border-slate-500"
+        >
+          <img
+            class="object-cover relative w-full h-full rounded-full"
+            [src]="profile.profile_img_url"
+          />
+        </div>
+        <div class="">
+          {{ profile.name + ' ' + profile.lastname }}
+        </div>
+        <div class="">{{ profile.ocupation }}</div>
+        <div class="">{{ profile.address }}</div>
+        <div class="">{{ profile.email }}</div>
       </div>
-      <div class="">{{ profile?.ocupation }}</div>
-      <div class="">{{ profile?.address }}</div>
-      <div class="">{{ profile?.email }}</div>
-      <div class="flex gap-2">
-        <button class="py-2 px-4 text-white bg-slate-500 rounded-sm">
-          Interested in
-        </button>
-        <button class="py-2 px-4 text-white bg-slate-500 rounded-sm">
-          Add section
-        </button>
-        <button class="py-2 px-4 text-white bg-slate-500 rounded-sm">
-          More
+      <div class="flex flex-col gap-2" *ngIf="editable">
+        <input class="w-full" [(ngModel)]="profile.name" type="text" />
+        <input class="w-full" [(ngModel)]="profile.lastname" type="text" />
+        <input class="w-full" [(ngModel)]="profile.ocupation" type="text" />
+        <input class="w-full" [(ngModel)]="profile.address" type="text" />
+        <input class="w-full" [(ngModel)]="profile.email" type="text" />
+        <input
+          class="w-full"
+          [(ngModel)]="profile.profile_img_url"
+          type="text"
+        />
+        <input
+          class="w-full"
+          [(ngModel)]="profile.background_img_url"
+          type="text"
+        />
+        <div class="flex gap-2">
+          <button
+            (click)="edit(profile)"
+            class="py-2 px-4 text-white bg-slate-500 rounded-sm"
+          >
+            Edit
+          </button>
+          <button
+            (click)="setEditable()"
+            class="py-2 px-4 text-white bg-slate-500 rounded-sm"
+          >
+            Cancel
+          </button>
+        </div>
+      </div>
+      <div class="flex gap-3" *ngIf="loggedIn">
+        <button
+          class="py-2 px-4 text-white bg-slate-500 rounded-sm"
+          *ngIf="!editable"
+          (click)="setEditable()"
+        >
+          <span>Edit details </span>
+          <fa-icon icon="pencil"></fa-icon>
         </button>
       </div>
     </div>
-    <div class="">Current workplace logo</div>
   </div>
 </div>

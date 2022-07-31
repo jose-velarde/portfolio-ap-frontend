@@ -1,6 +1,6 @@
 export interface Education {
   id: number
-  degree: number
+  degree: string
   institution: string
   location: string
   institution_img_url: string

@@ -41,9 +41,23 @@ export class ProfileService {
   }
 
   putProfile(profile: Profile): Observable<Profile> {
-    return this.http.post<Profile>(
+    return this.http.put<Profile>(
       'https://jvelarde-ap-backend.herokuapp.com/api/profiles/1',
       profile
+    )
+  }
+
+  putExperience(experience: Experience): Observable<Experience> {
+    return this.http.put<Experience>(
+      'https://jvelarde-ap-backend.herokuapp.com/api/experience/' +
+        experience.id,
+      experience
+    )
+  }
+  putEducation(education: Education): Observable<Education> {
+    return this.http.put<Education>(
+      'https://jvelarde-ap-backend.herokuapp.com/api/education/' + education.id,
+      education
     )
   }
 }

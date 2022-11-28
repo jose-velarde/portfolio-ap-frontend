@@ -3,29 +3,184 @@
 >
   <h2 class="flex justify-between items-center">
     <span>Skills</span>
-    <fa-icon class="text-slate-700" icon="plus"></fa-icon>
+    <button (click)="setEditable()">
+      <fa-icon class="text-slate-700" icon="pencil"></fa-icon>
+    </button>
   </h2>
 
-  <div class="grid grid-cols-4" *ngFor="let skill of skills">
-    <div
-      class="flex flex-col items-center"
-      *ngFor="let soft_skill of skill.soft_skills"
-    >
-      <app-progress-circle
-        [progress]="soft_skill.soft_skill_score"
-      ></app-progress-circle>
-      <p class="">{{ soft_skill.soft_skill_name }}</p>
+  <div *ngIf="!editable">
+    <div class="grid grid-cols-4" *ngFor="let skill of skills">
+      <div
+        class="flex flex-col items-center"
+        *ngFor="let soft_skill of skill.soft_skills"
+      >
+        <app-progress-circle
+          [progress]="soft_skill.soft_skill_score"
+        ></app-progress-circle>
+        <p class="">{{ soft_skill.soft_skill_name }}</p>
+      </div>
+    </div>
+    <div class="grid grid-cols-4" *ngFor="let skill of skills">
+      <div
+        class="flex flex-col items-center"
+        *ngFor="let hard_skill of skill.hard_skills"
+      >
+        <app-progress-circle
+          [progress]="hard_skill.hard_skill_score"
+        ></app-progress-circle>
+        <p class="">{{ hard_skill.hard_skill_name }}</p>
+      </div>
     </div>
   </div>
-  <div class="grid grid-cols-4" *ngFor="let skill of skills">
-    <div
-      class="flex flex-col items-center"
-      *ngFor="let hard_skill of skill.hard_skills"
-    >
-      <app-progress-circle
-        [progress]="hard_skill.hard_skill_score"
-      ></app-progress-circle>
-      <p class="">{{ hard_skill.hard_skill_name }}</p>
-    </div>
+
+  <div *ngIf="editable">
+    <form (ngSubmit)="editSkills(skillsForm)" #skillsForm="ngForm">
+      <div class="flex flex-col gap-2">
+        <p class="font-bold">Skills: Edit Skills</p>
+        <div class="flex gap-3">
+          <input
+            class="w-9/12"
+            name="soft_skill_name_1"
+            ngModel
+            type="text"
+            placeholder="Soft Skill Name #1"
+          />
+          <input
+            class="w-3/12"
+            name="soft_skill_score_1"
+            ngModel
+            type="text"
+            placeholder="Soft Skill Score #1"
+          />
+        </div>
+        <div class="flex gap-3">
+          <input
+            class="w-9/12"
+            name="soft_skill_name_2"
+            ngModel
+            type="text"
+            placeholder="Soft Skill Name #2"
+          />
+          <input
+            class="w-3/12"
+            name="soft_skill_score_2"
+            ngModel
+            type="text"
+            placeholder="Soft Skill Score #2"
+          />
+        </div>
+        <div class="flex gap-3">
+          <input
+            class="w-9/12"
+            name="soft_skill_name_3"
+            ngModel
+            type="text"
+            placeholder="Soft Skill Name #3"
+          />
+          <input
+            class="w-3/12"
+            name="soft_skill_score_3"
+            ngModel
+            type="text"
+            placeholder="Soft Skill Score #3"
+          />
+        </div>
+        <div class="flex gap-3">
+          <input
+            class="w-9/12"
+            name="soft_skill_name_4"
+            ngModel
+            type="text"
+            placeholder="Soft Skill Name #4"
+          />
+          <input
+            class="w-3/12"
+            name="soft_skill_score_4"
+            ngModel
+            type="text"
+            placeholder="Soft Skill Score #4"
+          />
+        </div>
+        <div class="flex gap-3">
+          <input
+            class="w-9/12"
+            name="hard_skill_name_1"
+            ngModel
+            type="text"
+            placeholder="Hard Skill Name #1"
+          />
+          <input
+            class="w-3/12"
+            name="hard_skill_score_1"
+            ngModel
+            type="text"
+            placeholder="Hard Skill Score #1"
+          />
+        </div>
+        <div class="flex gap-3">
+          <input
+            class="w-9/12"
+            name="hard_skill_name_2"
+            ngModel
+            type="text"
+            placeholder="Hard Skill Name #2"
+          />
+          <input
+            class="w-3/12"
+            name="hard_skill_score_2"
+            ngModel
+            type="text"
+            placeholder="Hard Skill Score #2"
+          />
+        </div>
+        <div class="flex gap-3">
+          <input
+            class="w-9/12"
+            name="hard_skill_name_3"
+            ngModel
+            type="text"
+            placeholder="Hard Skill Name #3"
+          />
+          <input
+            class="w-3/12"
+            name="hard_skill_score_3"
+            ngModel
+            type="text"
+            placeholder="Hard Skill Score #3"
+          />
+        </div>
+        <div class="flex gap-3">
+          <input
+            class="w-9/12"
+            name="hard_skill_name_4"
+            ngModel
+            type="text"
+            placeholder="Hard Skill Name #4"
+          />
+          <input
+            class="w-3/12"
+            name="hard_skill_score_4"
+            ngModel
+            type="text"
+            placeholder="Hard Skill Score #4"
+          />
+        </div>
+
+        <div class="flex gap-2 mb-2">
+          <button
+            type="submit"
+            class="py-2 px-4 text-white bg-slate-500 rounded-sm"
+          >
+            Edit
+          </button>
+          <button
+            (click)="setEditable()"
+            class="py-2 px-4 text-white bg-slate-500 rounded-sm"
+          >
+            Cancel
+          </button>
+        </div>
+      </div>
+    </form>
   </div>
 </div>

@@ -103,4 +103,10 @@ export class ProfileService {
       { responseType: 'text' }
     )
   }
+  putSkills(skills: Skills): Observable<Skills> {
+    return this.http.put<Skills>(
+      'https://jvelarde-ap-backend.herokuapp.com/api/profiles/1/skills',
+      skills
+    )
+  }
 }

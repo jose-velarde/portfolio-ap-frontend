@@ -1,5 +1,5 @@
 export interface Skills {
-  id: number
+  id?: number
   soft_skills: SoftSkill[]
   hard_skills: HardSkill[]
 }

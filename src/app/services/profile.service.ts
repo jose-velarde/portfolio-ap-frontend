@@ -60,6 +60,12 @@ export class ProfileService {
       education
     )
   }
+  putProject(project: Project): Observable<Project> {
+    return this.http.put<Project>(
+      'https://jvelarde-ap-backend.herokuapp.com/api/project/' + project.id,
+      project
+    )
+  }
   postEducation(education: Education) {
     return this.http.post<Education>(
       'https://jvelarde-ap-backend.herokuapp.com/api/profiles/1/education',
@@ -82,6 +88,18 @@ export class ProfileService {
     return this.http.delete(
       'https://jvelarde-ap-backend.herokuapp.com/api/experience/' +
         experience.id,
+      { responseType: 'text' }
+    )
+  }
+  postProject(project: Project) {
+    return this.http.post<Project>(
+      'https://jvelarde-ap-backend.herokuapp.com/api/profiles/1/project',
+      project
+    )
+  }
+  deleteProject(project: Project) {
+    return this.http.delete(
+      'https://jvelarde-ap-backend.herokuapp.com/api/project/' + project.id,
       { responseType: 'text' }
     )
   }

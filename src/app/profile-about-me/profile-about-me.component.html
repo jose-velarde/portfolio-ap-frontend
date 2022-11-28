@@ -3,9 +3,6 @@
     <h2 class="flex justify-between items-center">
       <span>About me</span>
       <div class="flex gap-3" *ngIf="loggedIn">
-        <button>
-          <fa-icon class="text-slate-700" icon="trash-can"></fa-icon>
-        </button>
         <button (click)="setEditable()">
           <fa-icon class="text-slate-700" icon="pencil"></fa-icon>
         </button>

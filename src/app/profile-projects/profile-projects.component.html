@@ -3,9 +3,71 @@
 >
   <h2 class="flex justify-between items-center">
     <span>Projects</span>
-    <fa-icon class="text-slate-700" icon="plus"></fa-icon>
+    <button (click)="setNewProjectForm()">
+      <fa-icon class="text-slate-700" icon="plus"></fa-icon>
+    </button>
   </h2>
-  <div class="flex flex-col gap-6">
+  <form
+    (ngSubmit)="postProject(projectForm.value)"
+    #projectForm="ngForm"
+    *ngIf="showNewProjectForm"
+  >
+    <div class="flex flex-col gap-2">
+      <p class="font-bold">Project: New Project</p>
+      <input
+        class="w-full"
+        name="project_name"
+        ngModel
+        type="text"
+        placeholder="Name"
+      />
+      <input
+        class="w-full"
+        name="project_url"
+        ngModel
+        type="text"
+        placeholder="URL"
+      />
+      <input
+        class="w-full"
+        name="description"
+        ngModel
+        type="text"
+        placeholder="Description"
+      />
+      <input
+        class="w-full"
+        name="repository_url"
+        ngModel
+        type="text"
+        placeholder="Repository URL"
+      />
+      <!-- <input
+        class="w-full"
+        name="stack"
+        ngModel
+        type="text"
+        placeholder="Stack"
+      /> -->
+
+      <div class="flex gap-2 mb-2">
+        <button
+          type="submit"
+          class="py-2 px-4 text-white bg-slate-500 rounded-sm"
+        >
+          New
+        </button>
+        <button
+          (click)="setNewProjectForm()"
+          class="py-2 px-4 text-white bg-slate-500 rounded-sm"
+        >
+          Cancel
+        </button>
+      </div>
+    </div>
+  </form>
+
+  <div class="flex flex-col gap-6" *ngIf="!editable">
     <div class="flex gap-4 items-center" *ngFor="let project of projects">
       <div class="flex grow-0 w-24 h-24 bg-slate-500 rounded-full"></div>
       <div class="flex flex-col grow">
@@ -17,10 +79,10 @@
             ></fa-icon
           ></a>
           <div class="flex gap-3">
-            <button>
+            <button (click)="deleteProject(project)">
               <fa-icon class="text-slate-700" icon="trash-can"></fa-icon>
             </button>
-            <button>
+            <button (click)="setEditable()">
               <fa-icon class="text-slate-700" icon="pencil"></fa-icon>
             </button>
           </div>
@@ -31,14 +93,39 @@
             - Repository <fa-icon class="text-slate-700" icon="link"></fa-icon
           ></a>
         </p>
-        <div class="flex flex-wrap gap-1">
+        <!-- <div class="flex flex-wrap gap-1">
           <span
             class="px-3 font-medium rounded-full border-2"
             *ngFor="let tech of project.stack"
           >
             {{ tech }}
           </span>
-        </div>
+        </div> -->
+      </div>
+    </div>
+  </div>
+  <div class="" *ngIf="editable">
+    <div class="flex flex-col gap-2" *ngFor="let project of projects">
+      <p class="font-bold">Project: {{ project.project_name }}</p>
+      <input class="w-full" [(ngModel)]="project.project_name" type="text" />
+      <input class="w-full" [(ngModel)]="project.project_url" type="text" />
+      <input class="w-full" [(ngModel)]="project.description" type="text" />
+      <input class="w-full" [(ngModel)]="project.repository_url" type="text" />
+      <!-- <input class="w-full" [(ngModel)]="project.stack" type="text" /> -->
+
+      <div class="flex gap-2 mb-2">
+        <button
+          (click)="editProject(project)"
+          class="py-2 px-4 text-white bg-slate-500 rounded-sm"
+        >
+          Edit
+        </button>
+        <button
+          (click)="setEditable()"
+          class="py-2 px-4 text-white bg-slate-500 rounded-sm"
+        >
+          Cancel
+        </button>
       </div>
     </div>
   </div>

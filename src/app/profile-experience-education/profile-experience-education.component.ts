@@ -16,7 +16,6 @@ export class ProfileExperienceEducationComponent implements OnInit {
   ) {}
   experiences: Experience[] = []
   educations: Education[] = []
-  newEducation: Education
   editable: boolean = false
   loggedIn: boolean = false
   showNewEducationForm: boolean = false

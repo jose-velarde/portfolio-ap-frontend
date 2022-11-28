@@ -72,4 +72,17 @@ export class ProfileService {
       { responseType: 'text' }
     )
   }
+  postExperience(experience: Experience) {
+    return this.http.post<Experience>(
+      'https://jvelarde-ap-backend.herokuapp.com/api/profiles/1/experience',
+      experience
+    )
+  }
+  deleteExperience(experience: Experience) {
+    return this.http.delete(
+      'https://jvelarde-ap-backend.herokuapp.com/api/experience/' +
+        experience.id,
+      { responseType: 'text' }
+    )
+  }
 }

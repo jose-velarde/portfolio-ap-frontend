@@ -20,6 +20,7 @@ export class ProfileExperienceEducationComponent implements OnInit {
   editable: boolean = false
   loggedIn: boolean = false
   showNewEducationForm: boolean = false
+  showNewExperienceForm: boolean = false
 
   showExperiences() {
     this.profileService.getExperiences().subscribe({
@@ -42,6 +43,9 @@ export class ProfileExperienceEducationComponent implements OnInit {
 
   setNewEducationForm() {
     this.showNewEducationForm = !this.showNewEducationForm
+  }
+  setNewExperienceForm() {
+    this.showNewExperienceForm = !this.showNewExperienceForm
   }
 
   editExperience(experience: Experience) {
@@ -80,6 +84,25 @@ export class ProfileExperienceEducationComponent implements OnInit {
       error: (error) => console.error(error),
       complete: () => {
         this.showEducations()
+      },
+    })
+  }
+  postExperience(experience: Experience) {
+    this.profileService.postExperience(experience).subscribe({
+      next: (response) => console.log(response),
+      error: (error) => console.error(error),
+      complete: () => {
+        this.setNewExperienceForm()
+        this.showExperiences()
+      },
+    })
+  }
+  deleteExperience(experience: Experience) {
+    this.profileService.deleteExperience(experience).subscribe({
+      next: (response) => console.log(response),
+      error: (error) => console.error(error),
+      complete: () => {
+        this.showExperiences()
       },
     })
   }

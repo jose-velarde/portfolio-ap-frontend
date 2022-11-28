@@ -2,10 +2,69 @@
   <div class="prose-p:my-0 prose-headings:mt-0 max-w-none prose">
     <h2 class="flex justify-between items-center">
       <span>Experience</span>
-      <button>
+      <button (click)="setNewExperienceForm()">
         <fa-icon class="text-slate-700" icon="plus"></fa-icon>
       </button>
     </h2>
+    <form
+      (ngSubmit)="postExperience(experienceForm.value)"
+      #experienceForm="ngForm"
+      *ngIf="showNewExperienceForm"
+    >
+      <div class="flex flex-col gap-2">
+        <p class="font-bold">Experience: New Experience</p>
+        <input
+          class="w-full"
+          name="position"
+          ngModel
+          type="text"
+          placeholder="Position"
+        />
+        <input
+          class="w-full"
+          name="company"
+          ngModel
+          type="text"
+          placeholder="Company"
+        />
+        <input
+          class="w-full"
+          name="start_date"
+          ngModel
+          type="date"
+          placeholder="Start Date"
+        />
+        <input
+          class="w-full"
+          name="end_date"
+          ngModel
+          type="date"
+          placeholder="End Date"
+        />
+        <input
+          class="w-full"
+          name="location"
+          ngModel
+          type="text"
+          placeholder="Location"
+        />
+
+        <div class="flex gap-2 mb-2">
+          <button
+            type="submit"
+            class="py-2 px-4 text-white bg-slate-500 rounded-sm"
+          >
+            New
+          </button>
+          <button
+            (click)="setNewExperienceForm()"
+            class="py-2 px-4 text-white bg-slate-500 rounded-sm"
+          >
+            Cancel
+          </button>
+        </div>
+      </div>
+    </form>
 
     <div class="" *ngIf="!editable">
       <div
@@ -17,7 +76,7 @@
           <h3 class="flex justify-between items-center">
             <span>{{ experience.position }}</span>
             <div class="flex gap-3" *ngIf="loggedIn">
-              <button>
+              <button (click)="deleteExperience(experience)">
                 <fa-icon class="text-slate-700" icon="trash-can"></fa-icon>
               </button>
               <button (click)="setEditable()">

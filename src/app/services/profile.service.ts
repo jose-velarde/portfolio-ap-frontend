@@ -66,4 +66,10 @@ export class ProfileService {
       education
     )
   }
+  deleteEducation(education: Education) {
+    return this.http.delete(
+      'https://jvelarde-ap-backend.herokuapp.com/api/education/' + education.id,
+      { responseType: 'text' }
+    )
+  }
 }

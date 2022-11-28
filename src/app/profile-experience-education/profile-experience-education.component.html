@@ -74,31 +74,47 @@
     >
       <div class="flex flex-col gap-2">
         <p class="font-bold">Education: New Education</p>
-        <input class="w-full form-control" name="degree" ngModel type="text" />
-        <input class="w-full form-control" name="career" ngModel type="text" />
         <input
-          class="w-full form-control"
+          class="w-full"
+          name="degree"
+          ngModel
+          type="text"
+          placeholder="Degree"
+        />
+        <input
+          class="w-full"
+          name="career"
+          ngModel
+          type="text"
+          placeholder="Carrer"
+        />
+        <input
+          class="w-full"
           name="institution"
           ngModel
           type="text"
+          placeholder="Institution"
         />
         <input
-          class="w-full form-control"
+          class="w-full"
           name="start_date"
           ngModel
           type="date"
+          placeholder="Start Date"
         />
         <input
-          class="w-full form-control"
+          class="w-full"
           name="end_date"
           ngModel
           type="date"
+          placeholder="End Date"
         />
         <input
-          class="w-full form-control"
+          class="w-full"
           name="location"
           ngModel
           type="text"
+          placeholder="Location"
         />
 
         <div class="flex gap-2 mb-2">
@@ -124,7 +140,7 @@
           <h3 class="flex justify-between items-center">
             <span>{{ education.career }}</span>
             <div class="flex gap-3" *ngIf="loggedIn">
-              <button (click)="deleteEducation()">
+              <button (click)="deleteEducation(education)">
                 <fa-icon class="text-slate-700" icon="trash-can"></fa-icon>
               </button>
               <button (click)="setEditable()">
@@ -147,8 +163,8 @@
         <input class="w-full" [(ngModel)]="education.degree" type="text" />
         <input class="w-full" [(ngModel)]="education.career" type="text" />
         <input class="w-full" [(ngModel)]="education.institution" type="text" />
-        <input class="w-full" [(ngModel)]="education.start_date" type="text" />
-        <input class="w-full" [(ngModel)]="education.end_date" type="text" />
+        <input class="w-full" [(ngModel)]="education.start_date" type="date" />
+        <input class="w-full" [(ngModel)]="education.end_date" type="date" />
         <input class="w-full" [(ngModel)]="education.location" type="text" />
 
         <div class="flex gap-2 mb-2">

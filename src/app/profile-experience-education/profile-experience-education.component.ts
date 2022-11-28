@@ -65,8 +65,6 @@ export class ProfileExperienceEducationComponent implements OnInit {
   }
 
   postEducation(education: Education) {
-    console.log(education)
-    console.log(this.newEducation)
     this.profileService.postEducation(education).subscribe({
       next: (response) => console.log(response),
       error: (error) => console.error(error),
@@ -76,9 +74,16 @@ export class ProfileExperienceEducationComponent implements OnInit {
       },
     })
   }
-  deleteEducation() {
-    console.log('deleted')
+  deleteEducation(education: Education) {
+    this.profileService.deleteEducation(education).subscribe({
+      next: (response) => console.log(response),
+      error: (error) => console.error(error),
+      complete: () => {
+        this.showEducations()
+      },
+    })
   }
+
   ngOnInit(): void {
     this.loggedIn = this.authService.isLoggedIn()
     this.showExperiences()

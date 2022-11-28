@@ -60,4 +60,10 @@ export class ProfileService {
       education
     )
   }
+  postEducation(education: Education) {
+    return this.http.post<Education>(
+      'https://jvelarde-ap-backend.herokuapp.com/api/profiles/1/education',
+      education
+    )
+  }
 }

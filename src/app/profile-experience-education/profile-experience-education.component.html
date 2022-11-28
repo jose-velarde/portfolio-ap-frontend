@@ -63,8 +63,60 @@
   <div class="prose-p:my-0 prose-headings:mt-0 max-w-none prose">
     <h2 class="flex justify-between items-center">
       <span>Education</span>
-      <fa-icon class="text-slate-700" icon="plus"></fa-icon>
+      <button (click)="setNewEducationForm()">
+        <fa-icon class="text-slate-700" icon="plus"></fa-icon>
+      </button>
     </h2>
+    <form
+      (ngSubmit)="postEducation(educationForm.value)"
+      #educationForm="ngForm"
+      *ngIf="showNewEducationForm"
+    >
+      <div class="flex flex-col gap-2">
+        <p class="font-bold">Education: New Education</p>
+        <input class="w-full form-control" name="degree" ngModel type="text" />
+        <input class="w-full form-control" name="career" ngModel type="text" />
+        <input
+          class="w-full form-control"
+          name="institution"
+          ngModel
+          type="text"
+        />
+        <input
+          class="w-full form-control"
+          name="start_date"
+          ngModel
+          type="date"
+        />
+        <input
+          class="w-full form-control"
+          name="end_date"
+          ngModel
+          type="date"
+        />
+        <input
+          class="w-full form-control"
+          name="location"
+          ngModel
+          type="text"
+        />
+
+        <div class="flex gap-2 mb-2">
+          <button
+            type="submit"
+            class="py-2 px-4 text-white bg-slate-500 rounded-sm"
+          >
+            New
+          </button>
+          <button
+            (click)="setNewEducationForm()"
+            class="py-2 px-4 text-white bg-slate-500 rounded-sm"
+          >
+            Cancel
+          </button>
+        </div>
+      </div>
+    </form>
     <div class="" *ngIf="!editable">
       <div class="flex gap-4 items-center" *ngFor="let education of educations">
         <div class="flex grow-0 w-24 h-24 bg-slate-500 rounded-full"></div>
@@ -72,7 +124,7 @@
           <h3 class="flex justify-between items-center">
             <span>{{ education.career }}</span>
             <div class="flex gap-3" *ngIf="loggedIn">
-              <button>
+              <button (click)="deleteEducation()">
                 <fa-icon class="text-slate-700" icon="trash-can"></fa-icon>
               </button>
               <button (click)="setEditable()">

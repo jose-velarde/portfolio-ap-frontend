@@ -16,8 +16,10 @@ export class ProfileExperienceEducationComponent implements OnInit {
   ) {}
   experiences: Experience[] = []
   educations: Education[] = []
+  newEducation: Education
   editable: boolean = false
   loggedIn: boolean = false
+  showNewEducationForm: boolean = false
 
   showExperiences() {
     this.profileService.getExperiences().subscribe({
@@ -36,6 +38,10 @@ export class ProfileExperienceEducationComponent implements OnInit {
 
   setEditable() {
     this.editable = !this.editable
+  }
+
+  setNewEducationForm() {
+    this.showNewEducationForm = !this.showNewEducationForm
   }
 
   editExperience(experience: Experience) {
@@ -58,6 +64,21 @@ export class ProfileExperienceEducationComponent implements OnInit {
     })
   }
 
+  postEducation(education: Education) {
+    console.log(education)
+    console.log(this.newEducation)
+    this.profileService.postEducation(education).subscribe({
+      next: (response) => console.log(response),
+      error: (error) => console.error(error),
+      complete: () => {
+        this.setNewEducationForm()
+        this.showEducations()
+      },
+    })
+  }
+  deleteEducation() {
+    console.log('deleted')
+  }
   ngOnInit(): void {
     this.loggedIn = this.authService.isLoggedIn()
     this.showExperiences()
